@@ -1,0 +1,15 @@
+[Unit]
+Description=HanaAgent Server
+After=network.target
+
+[Service]
+Type=simple
+User=YOUR_NAS_USERNAME           # ← 改成你的 NAS 用户名，例如：Agent
+WorkingDirectory=/vol1/1000/Hanako  # ← 如果安装路径不同，改成实际路径
+ExecStart=/usr/bin/npm run server
+Restart=always
+RestartSec=10
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
